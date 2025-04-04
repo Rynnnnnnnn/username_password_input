@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        text-align: center;
+    }
+    input, button {
+        display: block;
+        width: 200px;
+        margin: 5px auto;
+        padding: 8px;
+        font-size: 16px;
+    }
+    button {
+        background-color: blue;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: darkblue;
+    }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Login</h1>
+    <input type="text" id="username" placeholder="Enter your username"><br>
+    <input type="password" id="password" placeholder="Enter your password"><br>
+    <button onclick="validateInput()">Submit</button>
+</div>
+
+<script>
+    function validateInput() {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        
+        console.clear();
+        console.log("Username:", username);
+        console.log("Password:", password);
+
+        if (!username) {
+            alert("Username cannot be empty.");
+            return;
+        }
+        
+        if (!validPass(password)) {
+            alert("Invalid password! It must be at least 8 characters long, include an uppercase letter, and a lowercase letter.");
+            return;
+        }
+        
+        alert("Welcome, " + username + "!");
+    }
+
+    function validPass(password) {
+        return /^(?=.*[A-Z])(?=.*[a-z]).{8,}$/.test(password);
+    }
+</script>
+</body>
+</html>
